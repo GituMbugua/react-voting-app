@@ -2,10 +2,8 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useUserAuth } from "../context/UserAuthContext";
-import './Home.css'
 
-
-const Home = () => {
+const End = () => {
   const { logOut, user } = useUserAuth();
   const navigate = useNavigate();
   const handleLogout = async () => {
@@ -16,31 +14,22 @@ const Home = () => {
       console.log(error.message);
     }
   };
-  const startVote = () => {
-    navigate("/presidents")
-  }
 
   return (
     <>
-
       <div className="auth">
         <div className="p-4 box mt-3 text-center">
-          Welcome! Your Vote Matters!! <br />
+          Thank you for voting! <br />
           {user && user.email}
         </div>
-        
-        <div className="d-grid gap-2 ">
-          <Button variant="success" onClick={startVote}>
-            Vote
-          </Button>
+        <div className="d-grid gap-2">
           <Button variant="primary" onClick={handleLogout}>
             Log out
           </Button>
         </div>
       </div>
-      
     </>
   );
 };
 
-export default Home;
+export default End;
